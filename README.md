@@ -1,188 +1,219 @@
-# siril-scripts
-Siril Scripts by ag_astrophotography
+# Siril Scripts for Windows
 
-A collection of custom Siril processing scripts and tools for astrophotography.
+A collection of astrophotography scripts and Python tools for **Siril**, prepared for **Windows** and created by **ag_astrophotography**.
 
-Built and tested for Siril 1.4.x / 1.4.4 Stable.
+The goal of this repository is to provide practical tools for common astrophotography workflows such as **2× drizzle**, **channel processing**, **OSC channel extraction**, and **professional astronomical annotation**.
 
-Included tools
+> Designed for Siril 1.4.x / Siril 1.4.4 Stable on Windows.
 
-2xDrizzle Mono
+---
 
-Automated mono preprocessing with true 2× HST Drizzle.
+## Included tools
 
-Includes calibration, registration, drizzle and final stacking.
+| Tool | Version | Description |
+|---|---:|---|
+| **2× Drizzle Mono** | v1.0 | 2× drizzle workflow for mono data, including Full and From Masters variants. |
+| **2× Drizzle OSC** | v1.0 | 2× drizzle workflow for OSC / CFA data while preserving the Bayer pattern until drizzle. |
+| **Astro Channel Processor** | v1.5 | Python GUI for processing and combining LRGB, SHO and HOO channels inside Siril. |
+| **OSC Channel Extractor** | v1.0 | Extracts and processes individual channels from OSC image data. |
+| **AG Astro Annotator** | v2.8 | Creates professional RA/Dec grids, catalog labels, object markers, compass overlays and exportable annotations. |
 
-Typical folder structure:
+---
 
-biases/
-darks/
-flats/
-lights/
+## AG Astro Annotator
 
-A version using already existing master calibration files is also available.
+**AG Astro Annotator** is a Siril-based annotation tool for plate-solved astrophotography images.
 
-⸻
+### Features
 
-2xDrizzle OSC
+- RA / Dec coordinate grid
+- Siril-like automatic grid spacing
+- Adaptive coordinate-label placement based on image orientation
+- Separate horizontal and vertical grid colors
+- Messier, NGC, IC, Sharpless / Sh2 and LDN catalog support
+- Automatic catalog object size markers when diameter data is available
+- Custom objects using X/Y or RA/Dec coordinates
+- Custom circles, boxes, crosshairs and text annotations
+- Adjustable North / East compass
+- Siril plate-solving support
+- Zoomable and pannable preview
+- Siril AutoStretch preview
+- Transparent overlay export as PNG or TIFF
+- Complete annotated image export
+- Presentation FITS export
 
-Automated preprocessing for One Shot Color / Bayer CFA cameras with true 2× CFA Drizzle.
+The bundled annotation catalogs work offline.
 
-Important:
+---
 
-The OSC data stays undebayered until the drizzle step.
+## Installation on Windows
 
-Includes:
+### Siril `.ssf` scripts
 
-* Bias calibration
-* Dark calibration
-* Flat calibration
-* CFA-aware cosmetic correction
-* 2-pass registration
-* 2× Bayer Drizzle
-* Final RGB stack
+Download the ZIP for the script you want, extract it, and copy the included `.ssf` files to:
 
-Both a Full and a FromMasters version are included.
-
-⸻
-
-Astro Channel Processor
-
-A Siril-native Python tool for automatically registering and combining mono channels.
-
-Supported channels:
-
-* L
-* R
-* G
-* B
-* Ha
-* OIII
-* SII
-
-Features:
-
-* Native Drag & Drop
-* Automatic or manual registration reference
-* Save all registered channels
-* Create RGB
-* Create LRGB
-* Create SHO
-* Create HOO
-* Save luminance separately
-* Open finished results directly in Siril
-* Dark PyQt6 interface
-* Color-coded channel panels
-
-⸻
-
-OSC Channel Extractor
-
-A Siril-native tool for extracting channels from a finished RGB image.
-
-Available functions:
-
-* Extract L
-* Extract R
-* Extract G
-* Extract B
-* Extract RGB
-* Extract ALL
-
-Output example:
-
-Extracted/
-├── L_extracted.fit
-├── R_extracted.fit
-├── G_extracted.fit
-├── B_extracted.fit
-└── RGB_original.fit
-
-Extracted files can also be opened directly in Siril.
-
-⸻
-
-Installation
-
-SSF scripts
-
-Copy the .ssf file into:
-
+```text
 C:\Program Files\Siril\scripts
+```
 
-Administrator privileges may be required.
+Administrator permission may be required.
 
-Restart Siril afterwards.
+Restart Siril or refresh the script list afterwards.
 
-The script should then appear under:
+---
 
-Scripts
-→ SIRIL Script Files
+### Python tools
 
-Python scripts
+The Python-based tools include a Windows installer:
 
-The provided ZIP packages include:
-
+```text
 INSTALL_TO_SIRIL.bat
+```
 
-Extract the ZIP and run the installer.
+### Recommended installation
 
-The installer copies the script to:
+1. Download the ZIP for the tool you want.
+2. Extract the ZIP.
+3. Double-click `INSTALL_TO_SIRIL.bat`.
+4. Approve the Windows administrator prompt if requested.
+5. The installer copies the required files to:
 
+```text
 C:\Program Files\Siril\scripts
+```
 
-Restart Siril afterwards.
+6. Restart Siril.
+7. Open **Scripts → Python Scripts**.
 
-The tool should then appear under:
+The tool should now appear in Siril.
 
-Scripts
-→ Python Scripts
+---
 
-Requirements
+## Windows security note
 
-* Siril 1.4.x
-* Tested primarily with Siril 1.4.4 Stable
-* Windows
+Windows may display a SmartScreen warning for downloaded `.bat`, `.py`, or ZIP files.
 
-Python tools use Siril’s own Python environment and sirilpy.
+If you trust the files downloaded from this repository:
 
-PyQt6 is automatically installed into Siril’s Python environment if required.
+1. Choose **More info** if SmartScreen appears.
+2. Select **Run anyway**.
+3. Approve the administrator prompt if required.
 
-Notes about Drizzle
+No separate Python installation is normally required for Siril Python scripts when using a supported Siril installation.
 
-Drizzle works best with properly dithered data.
+---
 
-For 2× drizzle, the output image contains approximately four times as many pixels as the original frame, so RAM and disk usage increase significantly.
+## Downloads
 
-Current drizzle settings use:
+The latest Windows packages are available from the **Releases** section of this repository.
 
-Scale:   2×
-Pixfrac: 0.7
-Kernel:  square
+Recommended release assets:
 
-These settings are intended as a robust general-purpose starting point.
+```text
+2xDrizzle_Mono_by_ag_astrophotography_v1.0.zip
+2xDrizzle_OSC_by_ag_astrophotography_v1.0.zip
+Astro_Channel_Processor_Siril_v1.5.zip
+OSC_Channel_Extractor_by_ag_astrophotography_v1.0.zip
+AG_Astro_Annotator_Siril_v2.8.zip
+```
 
-Author
+---
 
-Created by ag_astrophotography
+## 2× Drizzle workflows
 
-Astrophotography, software experiments and custom Siril workflows.
+### 2× Drizzle Mono
 
-Feedback
+Designed for monochrome data and available in two workflow variants:
 
-Testing, bug reports and suggestions are welcome.
+- **Full** – complete processing workflow
+- **From Masters** – starts from existing master calibration frames
 
-If you encounter a problem, please include:
+### 2× Drizzle OSC
 
-* Siril version
-* Script/tool version
-* Screenshot of the error
-* Relevant Siril console output
+Designed for one-shot-color / CFA data.
 
-Disclaimer
+The Bayer / CFA structure is preserved until the drizzle stage so the data is handled correctly before debayering.
 
-These scripts are provided as experimental astrophotography tools.
+---
 
-Always keep backups of your original data.
+## Astro Channel Processor
 
-Original FITS files are not intentionally modified by the Python tools; temporary working copies are used during processing.
+A native Siril Python GUI designed for multi-channel astrophotography workflows.
+
+Supported combinations include:
+
+- **LRGB**
+- **SHO**
+- **HOO**
+
+It provides a simple interface for selecting channel files and performing common channel-processing steps directly from Siril.
+
+---
+
+## OSC Channel Extractor
+
+A Siril Python tool for extracting individual channels from OSC image data.
+
+Useful for workflows where separate channel data is required for further processing, recombination, or experimentation inside Siril.
+
+---
+
+## Compatibility
+
+These scripts were prepared for:
+
+- **Siril 1.4.x**
+- **Siril 1.4.4 Stable**
+- **Windows**
+- Siril Python scripts using `sirilpy`
+
+The Windows packages are separate from the macOS releases to keep installation simple and platform-specific.
+
+> If you discover a Windows-specific issue, please open a GitHub Issue and include your Windows version, Siril version and the affected script.
+
+---
+
+## Repository structure
+
+```text
+siril-scripts/
+├── 2x Drizzle Mono
+├── 2x Drizzle OSC
+├── Astro Channel Processor
+├── OSC Channel Extractor
+└── AG Astro Annotator
+```
+
+Release ZIP files can be kept in **GitHub Releases**, while the repository itself can contain documentation, screenshots and source files.
+
+---
+
+## About
+
+Created for astrophotographers who want a straightforward workflow inside Siril without having to move every processing step to separate software.
+
+Developed by **ag_astrophotography**.
+
+Instagram: **@ag_astrophotography**
+
+---
+
+## License
+
+This project is released under the **MIT License**.
+
+You are free to use, modify and redistribute the code under the terms of the license.
+
+---
+
+## Support & feedback
+
+Found a bug, have a workflow idea, or want to suggest a new feature?
+
+Please open an **Issue** in this repository.
+
+Clear screenshots, Siril console output and a short description of the workflow are especially helpful when reporting problems.
+
+---
+
+### Clear skies ✨
